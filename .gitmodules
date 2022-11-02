@@ -1,0 +1,6 @@
+[submodule "data/ita-corpus"]
+	path = data/ita-corpus
+	url = https://github.com/WakishiDeer/ita-corpus
+[submodule "speech-facial-movement-recording-system-for-avatar-animation-web"]
+	path = speech-facial-movement-recording-system-for-avatar-animation-web
+	url = https://github.com/WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web
