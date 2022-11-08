@@ -1,3 +1,11 @@
+"""
+This script generates a random script for the ITA-corpus and Japanese vowels.
+You can edit and optimize your own script by changing the parameters in the lines.
+
+This script is distributed under the MIT License
+Copyright (c) 2022 Ryosuke Miyawaki
+"""
+
 import pandas as pd
 import uuid
 import pathlib
