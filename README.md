@@ -18,6 +18,8 @@ We will upgrade our system to be well-connected or try not to use third party ap
 
 ## Setup
 
+Target platforms: Linux, Windows, and macOS
+
 This repository relies on two submodules:
 
 1. ITA Corpus - Japanese phoneme-balanced corpus provided by the [authors](#ita-corpushttpsgithubcommmoriseita-corpus)
@@ -44,6 +46,10 @@ order of scripts for each condition.
 It will automatically create JSON files under
 the `speech-facial-movement-recording-system-for-avatar-animation-web/assets/user_data/{PARTICIPANT_UUID}`.
 
+For Windows user, there is a limitation of long length of path, so you need to allow it.
+For more information, please refer
+to [this site](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry).
+
 The participants name was mapped to UUID to ensure unique ID.
 This mapping was specified under the `user_uuid_mapping.json` and `user_uuid_mapping.csv` under
 the `speech-facial-movement-recording-system-for-avatar-animation-web/assets/user_data/` directory.
@@ -52,7 +58,7 @@ So, please be sure to ignore such information containing privacy when managing v
 
 ## Participant Data
 
-By default, this JSON file contains following information:
+By default, participant JSON file contains following information:
 
 ```json
 {
