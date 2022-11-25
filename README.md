@@ -20,6 +20,8 @@ We will upgrade our system to be well-connected or try not to use third party ap
 
 Target platforms: Linux, Windows, and macOS
 
+### 1. Clone repositories
+
 This repository relies on two submodules:
 
 1. ITA Corpus - Japanese phoneme-balanced corpus provided by the [authors](#ita-corpushttpsgithubcommmoriseita-corpus)
@@ -38,7 +40,9 @@ Or, if you already cloned this repository, just run following command.
 $ git submodule update --remote --merge
 ```
 
-After that, you can add participants to `data/participants_list.json`.
+### 2. Scripts generation
+
+After cloning, you can add participants to `data/participants_list.json`.
 We added a user named `default` as a default setting.
 
 If you complete adding, you have to run `src/script_randomizer/script_random_generator_ita.py` to generate randomized
@@ -46,7 +50,8 @@ order of scripts for each condition.
 It will automatically create JSON files under
 the `speech-facial-movement-recording-system-for-avatar-animation-web/assets/user_data/{PARTICIPANT_UUID}`.
 
-For Windows user, there is a limitation of long length of path, so you need to allow it.
+For Windows users, some might encounter problem while the generation.
+This is happened because there is a limitation of long length of path, so you need to allow it.
 For more information, please refer
 to [this site](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry).
 
@@ -54,7 +59,17 @@ The participants name was mapped to UUID to ensure unique ID.
 This mapping was specified under the `user_uuid_mapping.json` and `user_uuid_mapping.csv` under
 the `speech-facial-movement-recording-system-for-avatar-animation-web/assets/user_data/` directory.
 
-So, please be sure to ignore such information containing privacy when managing version control system.
+So, please be sure to ignore such information containing privacy when managing with version control system.
+
+### 3. Install dependencies for WEB-implementation
+
+Please move to the cloned
+subcomponent, [WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web,](https://github.com/WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web)
+which contains programs for WEB-recording system.
+
+There is an README.md file that you can follow to install dependencies and run the system.
+
+Note that we assume the system can be used in the localhost even though there is both client and sever programs.
 
 ## Participant Data
 
@@ -96,6 +111,17 @@ If you follow this format and change some properties written in `index.vue`, you
 
 ## Credits
 
+### Project Organizers and authors
+
+- Ryosuke Miyawaki - CARE Lab, NAIST
+- Monica Perusquia-Hernandez - CARE Lab, NAIST
+- Naoya Isoyama - CARE Lab, NAIST
+- Hideaki Uchiyama - CARE Lab, NAIST
+- Kiyoshi Kiyokawa - CARE Lab, NAIST
+
+Looking for information about our lab?
+Please visit [here](https://carelab.info/en/) to find more information.
+
 ### ITA Corpus (dependency)
 
 [Project Link](https://github.com/mmorise/ita-corpus) (Note that we customized ruby for the difficult Japanese Kanji)
@@ -106,7 +132,7 @@ If you follow this format and change some properties written in `index.vue`, you
 - Phrase Extraction (文章抽出)：細田計
 - Adviser (アドバイザ)：齊藤剛史（九州工業大学），森勢将雅（明治大学）
 
-### Citation
+## Citation
 
 - Under construction...
 
