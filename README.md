@@ -24,7 +24,7 @@ Target platforms: Linux, Windows, and macOS
 
 This repository relies on two submodules:
 
-1. ITA Corpus - Japanese phoneme-balanced corpus provided by the [authors](#ita-corpushttpsgithubcommmoriseita-corpus)
+1. ITA Corpus - Japanese phoneme-balanced corpus provided by the [authors](#ita-corpus-dependency)
 2. WEB recording implementation
    by [Ryosuke Miyawaki](https://github.com/WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web)
 
@@ -109,6 +109,32 @@ For our project, we set `{TASK_01}` as [ITA Corpus](#ita-corpus-dependency) and 
 
 If you follow this format and change some properties written in `index.vue`, you can use your preferred corpus.
 
+## Citation
+
+You can find our paper [here](https://diglib.eg.org/handle/10.2312/egve20221273).
+
+The citation format in the bibtex is as follows:
+
+```bibtex
+@inproceedings {10.2312:egve.20221273,
+   booktitle = {ICAT-EGVE 2022 - International Conference on Artificial Reality and Telexistence and Eurographics Symposium on Virtual Environments},
+   editor = {Hideaki Uchiyama and Jean-Marie Normand},
+   title = {{A Data Collection Protocol, Tool and Analysis for the Mapping of Speech Volume to Avatar Facial Animation}},
+   author = {Miyawaki, Ryosuke and Perusquia-Hernandez, Monica and Isoyama, Naoya and Uchiyama, Hideaki and Kiyokawa, Kiyoshi},
+   year = {2022},
+   publisher = {The Eurographics Association},
+   ISSN = {1727-530X},
+   ISBN = {978-3-03868-179-3},
+   DOI = {10.2312/egve.20221273}
+}
+```
+
+or in plain text:
+
+```text
+R. Miyawaki, M. Perusquia-Hernandez, N. Isoyama, H. Uchiyama, and K. Kiyokawa, “A Data Collection Protocol, Tool and Analysis for the Mapping of Speech Volume to Avatar Facial Animation,” in ICAT-EGVE 2022 - International Conference on Artificial Reality and Telexistence and Eurographics Symposium on Virtual Environments, 2022. doi: 10.2312/egve.20221273.
+```
+
 ## Credits
 
 ### Project Organizers and authors
@@ -131,10 +157,6 @@ Please visit [here](https://carelab.info/en/) to find more information.
 - Creation and Management of Phrases (文章作成・管理)：小口純矢（明治大学）
 - Phrase Extraction (文章抽出)：細田計
 - Adviser (アドバイザ)：齊藤剛史（九州工業大学），森勢将雅（明治大学）
-
-## Citation
-
-- Under construction...
 
 ## License
 
