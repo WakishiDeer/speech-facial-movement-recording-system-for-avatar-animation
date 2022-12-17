@@ -13,13 +13,18 @@ import json
 import random
 import os
 
+
+def read_script(_script_path):
+    return pd.read_csv(str(_script_path), header=None)
+
+
 # for generating corpus
 script_path = pathlib.Path("../../data/ita-corpus/emotion_transcript_utf8.txt").resolve()
 web_path = pathlib.Path(
     "../../speech-facial-movement-recording-system-for-avatar-animation-web").resolve()
 
 # formatting for ita-corpus
-df_raw = pd.read_csv(str(script_path), header=None)
+df_raw = read_script(script_path)
 df_raw = df_raw[0].str.split(":")
 df_corpus = pd.DataFrame(columns=["no", "content"])
 # give no and its content
@@ -117,3 +122,4 @@ for i, p in enumerate(participants):
 
     df_participants.to_csv(web_path / "assets" / "user_data" / "user_uuid_mapping.csv")
     df_participants.to_json(web_path / "assets" / "user_data" / "user_uuid_mapping.json")
+
