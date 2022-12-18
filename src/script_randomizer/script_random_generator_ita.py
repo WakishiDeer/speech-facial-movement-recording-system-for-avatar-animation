@@ -18,6 +18,8 @@ def read_script(_script_path):
     return pd.read_csv(str(_script_path), header=None)
 
 
+is_counterbalance = True
+
 # for generating corpus
 script_path = pathlib.Path("../../data/ita-corpus/emotion_transcript_utf8.txt").resolve()
 web_path = pathlib.Path(
@@ -33,6 +35,11 @@ for i, items in enumerate(df_raw):
         "no": items[0],
         "content": items[1],
     }, index=[i])])
+# for extract selected corpus
+extracted_index_path = pathlib.Path("../../data/ita-corpus/selected_index_ita_emo.txt").resolve()
+series_extracted_corpus = pd.read_csv(str(extracted_index_path), header=None)[0]
+# extract selected corpus
+df_corpus = df_corpus[df_corpus.index.isin(series_extracted_corpus[:])]
 
 # timecodes setting
 init_timecode_format = "00-00-00-00"
@@ -40,6 +47,7 @@ init_timecode_format = "00-00-00-00"
 # Do NOT change order of participants! It may cause inconsistent order of corpus
 participants_list_path = pathlib.Path("../../data/participants_list.json").resolve()
 participants = json.load(open(str(participants_list_path), "r"))["participants_list"]
+num_participants = len(participants)
 # for saving participants
 df_participants = pd.DataFrame(columns=["name", "uuid"])
 
@@ -61,7 +69,6 @@ for i, p in enumerate(participants):
     # create random order of scripts
     conditions = [
         "normal",
-        "low",
         "high",
         "muffled"
     ]
@@ -82,7 +89,18 @@ for i, p in enumerate(participants):
 
     # generate randomized conditions and scripts
     random.seed(i)
-    shuffled_conditions = random.sample(conditions[1:], len(conditions) - 1)  # without shuffled_conditions
+    shuffled_conditions = list()  # without normal condition
+    if is_counterbalance:
+        # counterbalance based on the number of participants
+        if i % 2 == 0:
+            shuffled_conditions.append("high")
+            shuffled_conditions.append("muffled")
+        else:
+            shuffled_conditions.append("muffled")
+            shuffled_conditions.append("high")
+    else:
+        shuffled_conditions = random.sample(conditions[1:], len(conditions) - 1)
+
     ita_dict["conditions"] = list()
     ita_dict["conditions"].append("normal")
     for condition in shuffled_conditions:
@@ -122,4 +140,3 @@ for i, p in enumerate(participants):
 
     df_participants.to_csv(web_path / "assets" / "user_data" / "user_uuid_mapping.csv")
     df_participants.to_json(web_path / "assets" / "user_data" / "user_uuid_mapping.json")
-
