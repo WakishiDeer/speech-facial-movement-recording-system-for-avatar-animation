@@ -126,6 +126,7 @@ for i, p in enumerate(participants):
     user_data_dict = dict()
     user_data_dict["ita"] = ita_dict
     user_data_dict["vowel"] = vowel_dict
+    user_data_dict["timecode_sync"] = init_timecode_format
     # add info into user_data_dict
     user_data_dict["rms_min"] = 0.0
     user_data_dict["rms_max"] = 0.0
@@ -135,8 +136,11 @@ for i, p in enumerate(participants):
     user_data_dir_path = web_path / "assets" / "user_data" / uuid_val
     # create dirs
     os.makedirs(user_data_dir_path, exist_ok=True)
-    with open(user_data_dir_path / ("data_" + uuid_val + ".json"), "w", encoding="utf-8") as json_file:
-        json.dump(user_data_dict, json_file, indent=3, ensure_ascii=False)
+    if (user_data_dir_path / ("data_" + uuid_val + ".json")).exists():
+        print(f"The file already exists: {uuid_val}")
+    else:
+        with open(user_data_dir_path / ("data_" + uuid_val + ".json"), "w", encoding="utf-8") as json_file:
+            json.dump(user_data_dict, json_file, indent=3, ensure_ascii=False)
 
     df_participants.to_csv(web_path / "assets" / "user_data" / "user_uuid_mapping.csv")
     df_participants.to_json(web_path / "assets" / "user_data" / "user_uuid_mapping.json")
