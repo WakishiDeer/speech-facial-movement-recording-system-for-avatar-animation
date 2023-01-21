@@ -19,11 +19,19 @@ def read_script(_script_path):
 
 
 is_counterbalance = True
+root_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../..')
 
 # for generating corpus
-script_path = pathlib.Path("../../data/ita-corpus/emotion_transcript_utf8.txt").resolve()
+script_path = pathlib.Path(
+  os.path.join(
+    root_path,
+    "data/ita-corpus/emotion_transcript_utf8.txt"
+)).resolve()
 web_path = pathlib.Path(
-    "../../speech-facial-movement-recording-system-for-avatar-animation-web").resolve()
+  os.path.join(
+    root_path,
+    "speech-facial-movement-recording-system-for-avatar-animation-web"
+)).resolve()
 
 # formatting for ita-corpus
 df_raw = read_script(script_path)
@@ -36,7 +44,11 @@ for i, items in enumerate(df_raw):
         "content": items[1],
     }, index=[i])])
 # for extract selected corpus
-extracted_index_path = pathlib.Path("../../data/ita-corpus/selected_index_ita_emo.txt").resolve()
+extracted_index_path = pathlib.Path(
+  os.path.join(
+    root_path,
+    "data/ita-corpus/selected_index_ita_emo.txt"
+)).resolve()
 series_extracted_corpus = pd.read_csv(str(extracted_index_path), header=None)[0]
 # extract selected corpus
 df_corpus = df_corpus[df_corpus.index.isin(series_extracted_corpus[:])]
@@ -45,7 +57,11 @@ df_corpus = df_corpus[df_corpus.index.isin(series_extracted_corpus[:])]
 init_timecode_format = "00-00-00-00"
 
 # Do NOT change order of participants! It may cause inconsistent order of corpus
-participants_list_path = pathlib.Path("../../data/participants_list.json").resolve()
+participants_list_path = pathlib.Path(
+  os.path.join(
+    root_path,
+    "data/participants_list.json"
+)).resolve()
 participants = json.load(open(str(participants_list_path), "r"))["participants_list"]
 num_participants = len(participants)
 # for saving participants
