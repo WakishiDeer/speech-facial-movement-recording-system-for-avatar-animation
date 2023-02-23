@@ -40,6 +40,11 @@ Or, if you already cloned this repository, just run following command.
 $ git submodule update --remote --merge
 ```
 
+Install dependencies in your favourite environment (conda, virtualenv, etc) with
+```
+pip install -r requirements.txt
+```
+
 ### 2. Scripts generation
 
 After cloning, you can add participants to `data/participants_list.json`.
