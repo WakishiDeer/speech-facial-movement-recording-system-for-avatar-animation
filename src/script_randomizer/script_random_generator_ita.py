@@ -149,15 +149,14 @@ for i, p in enumerate(participants):
     user_data_dict["participant"] = uuid_val
 
     # create corpus for each participant
-    user_data_dir_path = os.path.join(web_path, "assets", "user_data", uuid_val)
+    user_data_dir_path = web_path / "assets" / "user_data" / uuid_val
     # create dirs
     os.makedirs(user_data_dir_path, exist_ok=True)
-    user_data_filename = os.path.join(user_data_dir_path, f"data_{uuid_val}.json")
-    if user_data_filename.exists():
+    if (user_data_dir_path / ("data_" + uuid_val + ".json")).exists():
         print(f"The file already exists: {uuid_val}")
     else:
-        with open(user_data_filename, "w", encoding="utf-8") as json_file:
+        with open(user_data_dir_path / ("data_" + uuid_val + ".json"), "w", encoding="utf-8") as json_file:
             json.dump(user_data_dict, json_file, indent=3, ensure_ascii=False)
 
-    df_participants.to_csv(os.path.join(web_path, "assets", "user_data", "user_uuid_mapping.csv"))
-    df_participants.to_json(os.path.join(web_path, "assets", "user_data", "user_uuid_mapping.json"))
+    df_participants.to_csv(web_path / "assets" / "user_data" / "user_uuid_mapping.csv")
+    df_participants.to_json(web_path / "assets" / "user_data" / "user_uuid_mapping.json")
