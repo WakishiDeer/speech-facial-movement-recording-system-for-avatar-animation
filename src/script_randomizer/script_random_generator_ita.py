@@ -153,7 +153,7 @@ for i, p in enumerate(participants):
     # create dirs
     os.makedirs(user_data_dir_path, exist_ok=True)
     user_data_filename = os.path.join(user_data_dir_path, f"data_{uuid_val}.json")
-    if user_data_filename.exists():
+    if os.path.exists(user_data_filename):
         print(f"The file already exists: {uuid_val}")
     else:
         with open(user_data_filename, "w", encoding="utf-8") as json_file:
