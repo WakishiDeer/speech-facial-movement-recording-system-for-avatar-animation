@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: ./speech-facial-movement-recording-system-for-avatar-animation-web
+    volumes:
+        # link user data folder in container (it is not part of the image),
+        # this way the saved data is accessible from the host computer after docker has been stopped.
+        - ./speech-facial-movement-recording-system-for-avatar-animation-web/assets/user_data/:/usr/src/app/assets/user_data/
+    ports:
+      - "3000:3000"
