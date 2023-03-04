@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import pathlib
+import os
 
 
 def read_script(_script_path):
@@ -68,7 +69,12 @@ def extract_script_by_length(_df_katakana, _median, _q1, _q3):
 
 
 if __name__ == "__main__":
-    script_path = pathlib.Path("../../data/ita-corpus/emotion_transcript_utf8.txt").resolve()
+    root_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../..')
+    script_path = pathlib.Path(
+        os.path.join(
+            root_path, "data/ita-corpus/emotion_transcript_utf8.txt"
+        )
+    ).resolve()
     # extract selected script
     df_raw = read_script(script_path)
     df_katakana = df_raw[1]
@@ -116,5 +122,9 @@ if __name__ == "__main__":
     # save the index
     index_list = list(df_selected.index)
     # save index_list
-    with open("../../data/ita-corpus/selected_index_ita_emo.txt", "w") as f:
+    with open(
+        os.path.join(
+            root_path, "data/ita-corpus/selected_index_ita_emo.txt"
+        ), "w"
+    ) as f:
         f.write("\n".join([str(i) for i in index_list]))

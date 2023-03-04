@@ -40,6 +40,11 @@ Or, if you already cloned this repository, just run following command.
 $ git submodule update --remote --merge
 ```
 
+Install dependencies in your favourite environment (conda, virtualenv, etc) with
+```
+pip install -r requirements.txt
+```
+
 ### 2. Scripts generation
 
 After cloning, you can add participants to `data/participants_list.json`.
@@ -62,6 +67,10 @@ the `speech-facial-movement-recording-system-for-avatar-animation-web/assets/use
 So, please be sure to ignore such information containing privacy when managing with version control system.
 
 ### 3. Install dependencies for WEB-implementation
+You can choose between running the server directly on your machine (3a),
+or use docker to build and run an image that is accessible from other computers as well.
+
+### 3a. Localhost
 
 Please move to the cloned
 subcomponent, [WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web,](https://github.com/WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web)
@@ -70,6 +79,16 @@ which contains programs for WEB-recording system.
 There is an README.md file that you can follow to install dependencies and run the system.
 
 Note that we assume the system can be used in the localhost even though there is both client and sever programs.
+
+### 3b. Docker
+The easiest is to use docker-compose, in this case you need to install [Docker](https://docs.docker.com/desktop/) as well as [docker-compose](https://docs.docker.com/compose/).
+Then you can simply run the following command:
+```
+docker-compose -f docker-compose.yaml up
+```
+
+If you want to use plain Docker, please refer to the instructions in [WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web/README.md](https://github.com/WakishiDeer/speech-facial-movement-recording-system-for-avatar-animation-web/blob/main/README.md).
+
 
 ## Participant Data
 
